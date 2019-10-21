@@ -10,6 +10,8 @@
 
 // TODO use Objective-C methods and a Switch structure for updateButton method
 // Optionally: Add reset button.
+// Check the right way to write the textFieldShouldReturn logic
+// Change the intro button to blue 
 
 double convertUnitOneToUnitTwo(double unitOneValue) {
     double unitTwoValue;
@@ -24,6 +26,8 @@ double convertUnitOneToUnitTwo(double unitOneValue) {
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentController;
 
 @property (weak, nonatomic) IBOutlet UILabel *outputField;
+
+@property (weak, nonatomic) IBOutlet UIButton *actionButton;
 
 @end
 
@@ -46,9 +50,17 @@ double convertUnitOneToUnitTwo(double unitOneValue) {
     [self.view endEditing:YES];
 }
 
+// This method is executed once the user presses the intro button in the beyboard
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    // call the updateButton method to automatically execute the conversion
+    [self updateButton:self.actionButton];
+    return NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.inputField.delegate = self;
 }
 
 

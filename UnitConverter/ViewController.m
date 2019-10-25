@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-// TODO use Objective-C methods and a Switch structure for updateButton method
+// TODO Switch structure for updateButton method
 // Optionally: Add reset button.
 // Bad input
 // UI when changing values in textInput
@@ -28,40 +28,51 @@
 
 @implementation ViewController
 
-// This method converts seconds to milliseconds
+// This method converts seconds to milliseconds.
 - (double)convertSecondsToMilliseconds:(double)seconds {
     double milliseconds = seconds * 1000;
     return milliseconds;
 }
 
-// This method converts seconds to minutes
+// This method converts seconds to minutes.
 - (double)convertSecondsToMinutes:(double)seconds {
     double minutes = seconds / 60;
     return minutes;
 }
 
-// This method converts minutes to hours
+// This method converts minutes to hours.
 - (double)convertMinutesToHours:(double)minutes {
     double hours = minutes / 60;
     return hours;
 }
 
+// This method is executed once the user presses the update button.
 - (IBAction)updateButton:(id)sender {
-    NSMutableString *buf = [[NSMutableString alloc] init];
+    NSMutableString *output = [[NSMutableString alloc] init];
     double userInput = [self.inputField.text doubleValue];
     NSInteger segmentControllerIndex = self.segmentController.selectedSegmentIndex;
-    if (segmentControllerIndex == 0) {
-        double unitTwoValue = [self convertSecondsToMilliseconds:userInput];
-        [buf appendString:[@(unitTwoValue) stringValue]];
-    } else if (segmentControllerIndex == 1) {
-        double unitTwoValue = [self convertSecondsToMinutes:userInput];
-        [buf appendString:[@(unitTwoValue) stringValue]];
-    } else {
-        double unitTwoValue = [self convertSecondsToMinutes:userInput];
-        unitTwoValue = [self convertMinutesToHours:unitTwoValue];
-        [buf appendString:[@(unitTwoValue) stringValue]];
+    switch (segmentControllerIndex) {
+        case 0:
+        {
+            double unitTwoValue = [self convertSecondsToMilliseconds:userInput];
+            [output appendString:[@(unitTwoValue) stringValue]];
+            break;
+        }
+        case 1:
+        {
+            double unitThreeValue = [self convertSecondsToMinutes:userInput];
+            [output appendString:[@(unitThreeValue) stringValue]];
+            break;
+        }
+        default:
+        {
+            double unitFourValue = [self convertSecondsToMinutes:userInput];
+            unitFourValue = [self convertMinutesToHours:unitFourValue];
+            [output appendString:[@(unitFourValue) stringValue]];
+            break;
+        }
     }
-    self.outputField.text = buf;
+    self.outputField.text = output;
 }
 
 // This method is executed once the user presses the send button in the beyboard
@@ -71,6 +82,7 @@
     return YES;
 }
 
+// This method is executed after loading the View
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

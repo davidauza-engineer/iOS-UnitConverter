@@ -8,11 +8,12 @@
 
 #import "ViewController.h"
 
-// TODO Switch structure for updateButton method
+// TODO
 // Optionally: Add reset button.
 // Bad input
 // UI when changing values in textInput
-// Format output
+// hide keyboard when touching outside
+// automatically update when selecting the segemented controller
 
 @interface ViewController ()
 
@@ -40,10 +41,23 @@
     return minutes;
 }
 
-// This method converts minutes to hours.
-- (double)convertMinutesToHours:(double)minutes {
-    double hours = minutes / 60;
+// This method converts seconds to hours
+- (double)convertSecondsToHours:(double)seconds {
+    double hours = seconds / 3600;
     return hours;
+}
+
+// This method formats the output like: 1,000 for integers and 1,000.25 for doubles
+- (NSMutableString *)formatOutput:(double)unitValue {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setGroupingSeparator:@","];
+    [formatter setGroupingSize:3];
+    [formatter setMinimumFractionDigits:0];
+    [formatter setMaximumFractionDigits:4];
+    [formatter setDecimalSeparator:@"."];
+    NSMutableString *result = [[formatter stringFromNumber:[NSNumber numberWithDouble:unitValue]] mutableCopy];
+    return result;
 }
 
 // This method is executed once the user presses the update button.
@@ -55,20 +69,19 @@
         case 0:
         {
             double unitTwoValue = [self convertSecondsToMilliseconds:userInput];
-            [output appendString:[@(unitTwoValue) stringValue]];
+            output = [self formatOutput:unitTwoValue];
             break;
         }
         case 1:
         {
             double unitThreeValue = [self convertSecondsToMinutes:userInput];
-            [output appendString:[@(unitThreeValue) stringValue]];
+            output = [self formatOutput:unitThreeValue];
             break;
         }
         default:
         {
-            double unitFourValue = [self convertSecondsToMinutes:userInput];
-            unitFourValue = [self convertMinutesToHours:unitFourValue];
-            [output appendString:[@(unitFourValue) stringValue]];
+            double unitFourValue = [self convertSecondsToHours:userInput];
+            output = [self formatOutput:unitFourValue];
             break;
         }
     }

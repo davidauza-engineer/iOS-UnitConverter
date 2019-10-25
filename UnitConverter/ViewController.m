@@ -11,7 +11,6 @@
 // TODO use Objective-C methods and a Switch structure for updateButton method
 // Optionally: Add reset button.
 // Check the right way to write the textFieldShouldReturn logic
-// Change the intro button to blue 
 
 double convertUnitOneToUnitTwo(double unitOneValue) {
     double unitTwoValue;
@@ -61,6 +60,7 @@ double convertUnitOneToUnitTwo(double unitOneValue) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.inputField.delegate = self;
+    [self.inputField setReturnKeyType:UIReturnKeySend];
 }
 
 

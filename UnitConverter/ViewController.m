@@ -11,12 +11,8 @@
 // TODO use Objective-C methods and a Switch structure for updateButton method
 // Optionally: Add reset button.
 // Bad input
-
-double convertUnitOneToUnitTwo(double unitOneValue) {
-    double unitTwoValue;
-    unitTwoValue = (10 * unitOneValue) + 2;
-    return unitTwoValue;
-}
+// UI when changing values in textInput
+// Format output
 
 @interface ViewController ()
 
@@ -32,27 +28,46 @@ double convertUnitOneToUnitTwo(double unitOneValue) {
 
 @implementation ViewController
 
+// This method converts seconds to milliseconds
+- (double)convertSecondsToMilliseconds:(double)seconds {
+    double milliseconds = seconds * 1000;
+    return milliseconds;
+}
+
+// This method converts seconds to minutes
+- (double)convertSecondsToMinutes:(double)seconds {
+    double minutes = seconds / 60;
+    return minutes;
+}
+
+// This method converts minutes to hours
+- (double)convertMinutesToHours:(double)minutes {
+    double hours = minutes / 60;
+    return hours;
+}
+
 - (IBAction)updateButton:(id)sender {
     NSMutableString *buf = [[NSMutableString alloc] init];
     double userInput = [self.inputField.text doubleValue];
     NSInteger segmentControllerIndex = self.segmentController.selectedSegmentIndex;
     if (segmentControllerIndex == 0) {
-        double unitTwoValue = convertUnitOneToUnitTwo(userInput);
+        double unitTwoValue = [self convertSecondsToMilliseconds:userInput];
         [buf appendString:[@(unitTwoValue) stringValue]];
     } else if (segmentControllerIndex == 1) {
-        [buf appendString:@"unit three"];
+        double unitTwoValue = [self convertSecondsToMinutes:userInput];
+        [buf appendString:[@(unitTwoValue) stringValue]];
     } else {
-        [buf appendString:@"unit four"];
+        double unitTwoValue = [self convertSecondsToMinutes:userInput];
+        unitTwoValue = [self convertMinutesToHours:unitTwoValue];
+        [buf appendString:[@(unitTwoValue) stringValue]];
     }
     self.outputField.text = buf;
-    // Hide keyboard
-    [self.view endEditing:YES];
 }
 
 // This method is executed once the user presses the send button in the beyboard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    // call the updateButton method to automatically execute the appropriate conversion
-    [self updateButton:self.actionButton];
+    // Hide keyboard
+    [textField resignFirstResponder];
     return YES;
 }
 

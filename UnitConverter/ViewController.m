@@ -10,7 +10,7 @@
 
 // TODO use Objective-C methods and a Switch structure for updateButton method
 // Optionally: Add reset button.
-// Check the right way to write the textFieldShouldReturn logic
+// Bad input
 
 double convertUnitOneToUnitTwo(double unitOneValue) {
     double unitTwoValue;
@@ -49,17 +49,18 @@ double convertUnitOneToUnitTwo(double unitOneValue) {
     [self.view endEditing:YES];
 }
 
-// This method is executed once the user presses the intro button in the beyboard
-- (BOOL) textFieldShouldReturn:(UITextField *)textField {
-    // call the updateButton method to automatically execute the conversion
+// This method is executed once the user presses the send button in the beyboard
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // call the updateButton method to automatically execute the appropriate conversion
     [self updateButton:self.actionButton];
-    return NO;
+    return YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.inputField.delegate = self;
+    // Set send button 
     [self.inputField setReturnKeyType:UIReturnKeySend];
 }
 

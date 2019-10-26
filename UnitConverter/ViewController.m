@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *outputField;
 
+@property (weak, nonatomic) IBOutlet UIButton *updateButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
 
 @end
@@ -34,13 +36,13 @@
     return minutes;
 }
 
-// This method converts seconds to hours
+// This method converts seconds to hours.
 - (double)convertSecondsToHours:(double)seconds {
     double hours = seconds / 3600;
     return hours;
 }
 
-// This method formats the output like: 1,000 for integers and 1,000.25 for doubles
+// This method formats the output like: 1,000 for integers and 1,000.2532 for doubles.
 - (NSMutableString *)formatOutput:(double)unitValue {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -82,14 +84,14 @@
     [self dismissKeyboard];
 }
 
-// This method is used to dismiss the keyboard in case it is open
+// This method is used to dismiss the keyboard in case it is open.
 - (void)dismissKeyboard {
     if ([self.inputField isFirstResponder]) {
         [self.inputField resignFirstResponder];
     }
 }
 
-// This method returns the view to its initial state
+// This method returns the view to its initial state.
 - (IBAction)resetView:(id)sender {
     self.inputField.text = @"";
     if (self.segmentController.selectedSegmentIndex != 0) {
@@ -98,14 +100,14 @@
     self.outputField.text = @"Click Update to Convert!";
 }
 
-// This method is executed after loading the View
+// This method is executed after loading the View.
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.inputField.delegate = self;
-    // Set send button 
+    // Set send button.
     [self.inputField setReturnKeyType:UIReturnKeySend];
-    // Set listener for touch events
+    // Set listener for touch events.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
 }

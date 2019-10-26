@@ -25,6 +25,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *actionButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
+
 @end
 
 @implementation ViewController
@@ -86,13 +88,30 @@
         }
     }
     self.outputField.text = output;
+    [self hideKeyboard];
+}
+
+// This method hides the keyboard in case it is open
+- (void)hideKeyboard {
+    if ([self.inputField isFirstResponder]) {
+        [self.inputField resignFirstResponder];
+    }
 }
 
 // This method is executed once the user presses the send button in the beyboard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     // Hide keyboard
-    [textField resignFirstResponder];
+    [self hideKeyboard];
     return YES;
+}
+
+// This method returns the view to its initial state
+- (IBAction)resetView:(id)sender {
+    self.inputField.text = @"";
+    if (self.segmentController.selectedSegmentIndex != 0) {
+        self.segmentController.selectedSegmentIndex = 0;
+    }
+    self.outputField.text = @"Click Update to Convert!";
 }
 
 // This method is executed after loading the View

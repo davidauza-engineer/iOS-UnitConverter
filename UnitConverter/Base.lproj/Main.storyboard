@@ -16,35 +16,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the number of seconds" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YZa-c2-BmR">
-                                <rect key="frame" x="54" y="309" width="215.5" height="34"/>
+                                <rect key="frame" x="54" y="272" width="215.5" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msu-4v-tSW">
-                                <rect key="frame" x="277.5" y="315.5" width="83" height="21"/>
+                                <rect key="frame" x="277.5" y="278.5" width="83" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kcZ-5V-9t4">
-                                <rect key="frame" x="54" y="406" width="306.5" height="32"/>
+                                <rect key="frame" x="54" y="369" width="306.5" height="32"/>
                                 <segments>
                                     <segment title="Milliseconds"/>
                                     <segment title="Minutes"/>
                                     <segment title="Hours"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click Update to Convert!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tx2-Nf-zh4">
-                                <rect key="frame" x="113" y="567" width="188" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Click Update to Convert!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tx2-Nf-zh4">
+                                <rect key="frame" x="112" y="530" width="188" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-P8-jnY">
-                                <rect key="frame" x="145" y="491" width="124.5" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-P8-jnY">
+                                <rect key="frame" x="144" y="454" width="124.5" height="30"/>
                                 <state key="normal" title="Update"/>
                                 <connections>
                                     <action selector="updateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YR0-5t-ma0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="16G-Gn-wai">
+                                <rect key="frame" x="187.5" y="594" width="39" height="30"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iJc-o1-vZE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -59,7 +66,10 @@
                             <constraint firstItem="kcZ-5V-9t4" firstAttribute="top" secondItem="YZa-c2-BmR" secondAttribute="bottom" constant="63" id="WSS-ec-xSj"/>
                             <constraint firstItem="UTJ-P8-jnY" firstAttribute="top" secondItem="kcZ-5V-9t4" secondAttribute="bottom" constant="54" id="Ya3-PY-jDV"/>
                             <constraint firstItem="kcZ-5V-9t4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-26.5" id="bb7-Ho-eY5"/>
+                            <constraint firstItem="16G-Gn-wai" firstAttribute="top" secondItem="tx2-Nf-zh4" secondAttribute="bottom" constant="43" id="efQ-EA-MT2"/>
+                            <constraint firstItem="kcZ-5V-9t4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-63.5" id="fYt-Vk-ele"/>
                             <constraint firstItem="kcZ-5V-9t4" firstAttribute="top" secondItem="msu-4v-tSW" secondAttribute="bottom" constant="69.5" id="g7S-tI-aiO"/>
+                            <constraint firstItem="16G-Gn-wai" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iyi-WW-QF7"/>
                             <constraint firstItem="UTJ-P8-jnY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="n5k-M1-xqU"/>
                             <constraint firstItem="msu-4v-tSW" firstAttribute="leading" secondItem="YZa-c2-BmR" secondAttribute="trailing" constant="8" id="oXV-ar-DH3"/>
                             <constraint firstItem="tx2-Nf-zh4" firstAttribute="top" secondItem="UTJ-P8-jnY" secondAttribute="bottom" constant="46" id="six-kV-TZ8"/>
@@ -70,6 +80,7 @@
                         <outlet property="actionButton" destination="UTJ-P8-jnY" id="J6G-A3-GDm"/>
                         <outlet property="inputField" destination="YZa-c2-BmR" id="GUi-vz-QBE"/>
                         <outlet property="outputField" destination="tx2-Nf-zh4" id="YLF-Zq-vzj"/>
+                        <outlet property="resetButton" destination="16G-Gn-wai" id="lEF-cq-jxy"/>
                         <outlet property="segmentController" destination="kcZ-5V-9t4" id="5p8-Hl-3zR"/>
                     </connections>
                 </viewController>

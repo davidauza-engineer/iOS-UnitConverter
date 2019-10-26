@@ -16,8 +16,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *outputField;
 
-@property (weak, nonatomic) IBOutlet UIButton *actionButton;
-
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
 
 @end

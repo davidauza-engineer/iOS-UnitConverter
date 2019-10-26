@@ -9,7 +9,6 @@
 #import "ViewController.h"
 
 // TODO
-// hide keyboard when touching outside
 // automatically update when selecting the segemented controller
 
 @interface ViewController ()
@@ -61,11 +60,7 @@
 
 // This method is executed once the user presses the update button.
 - (IBAction)updateButton:(id)sender {
-    NSString *input = self.inputField.text;
-    if ([input isEqualToString:@""]) {
-        return;
-    }
-    double userInput = [input doubleValue];
+    double userInput = [self.inputField.text doubleValue];
     NSMutableString *output = [[NSMutableString alloc] init];
     NSInteger segmentControllerIndex = self.segmentController.selectedSegmentIndex;
     switch (segmentControllerIndex) {
@@ -89,21 +84,14 @@
         }
     }
     self.outputField.text = output;
-    [self hideKeyboard];
+    [self dismissKeyboard];
 }
 
-// This method hides the keyboard in case it is open
-- (void)hideKeyboard {
+// This method is used to dismiss the keyboard in case it is open
+- (void)dismissKeyboard {
     if ([self.inputField isFirstResponder]) {
         [self.inputField resignFirstResponder];
     }
-}
-
-// This method is executed once the user presses the send button in the beyboard
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    // Hide keyboard
-    [self hideKeyboard];
-    return YES;
 }
 
 // This method returns the view to its initial state
@@ -122,6 +110,9 @@
     self.inputField.delegate = self;
     // Set send button 
     [self.inputField setReturnKeyType:UIReturnKeySend];
+    // Set listener for touch events
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
 }
 
 

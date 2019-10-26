@@ -8,9 +8,6 @@
 
 #import "ViewController.h"
 
-// TODO
-// automatically update when selecting the segemented controller
-
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *inputField;

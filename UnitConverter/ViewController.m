@@ -91,10 +91,17 @@
     }
 }
 
-// This method is used to update the answer once the user selects another segment in the
-// segment controller
+// This method is used to update the answer once the user selects another segment in the segment controller
 - (void)updateAnswer:(id)sender {
     [self updateButton:sender];
+}
+
+// This method updates the outputField if there is an edit in the inputField
+- (void)textFieldDidChange:(id)sender {
+    NSString *defaultText = @"Click Convert for the Answer!";
+    if (![self.outputField.text isEqualToString:defaultText]) {
+        self.outputField.text = defaultText;
+    }
 }
 
 // This method returns the view to its initial state.
@@ -118,6 +125,8 @@
     [self.view addGestureRecognizer:tap];
     // Set listener for changes in the segment controller.
     [self.segmentController addTarget:self action:@selector(updateAnswer:) forControlEvents:UIControlEventValueChanged];
+    // Add a "textFieldDidChange" notification method to the text field control.
+    [self.inputField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 

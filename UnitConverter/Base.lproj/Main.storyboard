@@ -34,15 +34,15 @@
                                     <segment title="Hours"/>
                                 </segments>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Click Update to Convert!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tx2-Nf-zh4">
-                                <rect key="frame" x="112" y="530" width="188" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click Convert for the Answer!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tx2-Nf-zh4">
+                                <rect key="frame" x="95" y="530" width="224" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-P8-jnY">
                                 <rect key="frame" x="144" y="454" width="124.5" height="30"/>
-                                <state key="normal" title="Update"/>
+                                <state key="normal" title="Convert"/>
                                 <connections>
                                     <action selector="updateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YR0-5t-ma0"/>
                                 </connections>
@@ -63,6 +63,7 @@
                             <constraint firstItem="kcZ-5V-9t4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EUU-w4-9LP"/>
                             <constraint firstItem="YZa-c2-BmR" firstAttribute="leading" secondItem="kcZ-5V-9t4" secondAttribute="leading" id="LEm-Ve-LhQ"/>
                             <constraint firstItem="tx2-Nf-zh4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NVq-tX-yrd"/>
+                            <constraint firstItem="tx2-Nf-zh4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RwW-kC-EjB"/>
                             <constraint firstItem="kcZ-5V-9t4" firstAttribute="top" secondItem="YZa-c2-BmR" secondAttribute="bottom" constant="63" id="WSS-ec-xSj"/>
                             <constraint firstItem="UTJ-P8-jnY" firstAttribute="top" secondItem="kcZ-5V-9t4" secondAttribute="bottom" constant="54" id="Ya3-PY-jDV"/>
                             <constraint firstItem="kcZ-5V-9t4" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-26.5" id="bb7-Ho-eY5"/>
@@ -77,11 +78,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="convertButton" destination="UTJ-P8-jnY" id="dqz-oQ-Eii"/>
                         <outlet property="inputField" destination="YZa-c2-BmR" id="GUi-vz-QBE"/>
                         <outlet property="outputField" destination="tx2-Nf-zh4" id="YLF-Zq-vzj"/>
                         <outlet property="resetButton" destination="16G-Gn-wai" id="lEF-cq-jxy"/>
                         <outlet property="segmentController" destination="kcZ-5V-9t4" id="5p8-Hl-3zR"/>
-                        <outlet property="updateButton" destination="UTJ-P8-jnY" id="dqz-oQ-Eii"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

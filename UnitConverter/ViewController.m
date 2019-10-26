@@ -16,7 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *outputField;
 
-@property (weak, nonatomic) IBOutlet UIButton *updateButton;
+@property (weak, nonatomic) IBOutlet UIButton *convertButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *resetButton;
 
@@ -91,13 +91,19 @@
     }
 }
 
+// This method is used to update the answer once the user selects another segment in the
+// segment controller
+- (void)updateAnswer:(id)sender {
+    [self updateButton:sender];
+}
+
 // This method returns the view to its initial state.
 - (IBAction)resetView:(id)sender {
     self.inputField.text = @"";
     if (self.segmentController.selectedSegmentIndex != 0) {
         self.segmentController.selectedSegmentIndex = 0;
     }
-    self.outputField.text = @"Click Update to Convert!";
+    self.outputField.text = @"Click Convert for the Answer!";
 }
 
 // This method is executed after loading the View.
@@ -110,6 +116,8 @@
     // Set listener for touch events.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    // Set listener for changes in the segment controller.
+    [self.segmentController addTarget:self action:@selector(updateAnswer:) forControlEvents:UIControlEventValueChanged];
 }
 
 

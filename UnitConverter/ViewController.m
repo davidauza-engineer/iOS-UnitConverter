@@ -9,7 +9,6 @@
 #import "ViewController.h"
 
 // TODO
-// UI when changing values in textInput
 // hide keyboard when touching outside
 // automatically update when selecting the segemented controller
 
@@ -62,9 +61,12 @@
 
 // This method is executed once the user presses the update button.
 - (IBAction)updateButton:(id)sender {
-    
+    NSString *input = self.inputField.text;
+    if ([input isEqualToString:@""]) {
+        return;
+    }
+    double userInput = [input doubleValue];
     NSMutableString *output = [[NSMutableString alloc] init];
-    double userInput = [self.inputField.text doubleValue];
     NSInteger segmentControllerIndex = self.segmentController.selectedSegmentIndex;
     switch (segmentControllerIndex) {
         case 0:

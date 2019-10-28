@@ -117,9 +117,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    // Set inputField delegate
     self.inputField.delegate = self;
-    // Set send button.
-    [self.inputField setReturnKeyType:UIReturnKeySend];
     // Set listener for touch events.
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
